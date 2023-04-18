@@ -137,5 +137,3 @@ function Shalina(data, parent){
   event.preventDefault();
   event.dataTransfer.dropEffect = 'copy';
 });
-
-
