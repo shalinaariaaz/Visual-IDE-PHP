@@ -1,0 +1,46 @@
+body{
+    
+    background-color: #1f2466;
+}
+.box{
+    position: absolute;
+    box-shadow: 0 0 10px rgba(15, 15, 15, 0.3);
+    background-color: #f3edf2;
+    padding: 10px;
+}
+#box1{
+    top: 0%;
+    left: 1%;
+    width: 27%;
+    height: 90%;
+    margin: 20px 10px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#box2{
+    top: 0%;
+    left: 30%;
+    width: 38%;
+    height: 90%;
+    margin: 20px 0px 10px 0px;
+    overflow-x: scroll; /* horizontal scrollbar */
+    overflow-y: scroll; /* vertical scrollbar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#box3{
+    top: 0%;
+    left: 70%;
+    width: 27%;
+    height: 43%;
+    margin: 20px 0px 2px 0px;
+}
+#box4{
+    bottom: 2.3%;
+    left: 70%;
+    width: 27%;
+    height: 42%;
+    margin: 0px 0px 10px 0px;
+}
