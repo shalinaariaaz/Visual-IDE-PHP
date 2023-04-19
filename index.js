@@ -2,7 +2,7 @@
 var parent = document.getElementById('box1');
 
 // Create an array of element names
-var elementNames = ['Var', 'Loop', 'Condition','Function','Arithmetic','File Read','File Write','Node Creation'];
+var elementNames = ['Var', 'Loop', 'Condition','Function','Arithmetic','FileRead','FileWrite','Echo'];
 
 // Loop through the array and create div elements with the specified names
 for (var i = 0; i < elementNames.length; i++) {

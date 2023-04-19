@@ -26,23 +26,27 @@ function codeToPHP(el) {
 
         return `$${name} = ${val};`;
     }
-    else if(el.classList.contains("forblock")) {
-        let val1 = el.getElementsByClassName("startfor")[0].value;
-        let val2 = el.getElementsByClassName("iterfor")[0].value;
-        let val3= el.getElementsByClassName("act")[0].value;
-        if(val3 =="--"){
-            return `for ($i = ${val1}; $i > ${val2}; $i ${val3} ) {`;
+    else if(el.id == "Loop") {
+        arr = el.querySelectorAll("input, select")
+
+        let val1 = arr[0].value;
+        let val2 = arr[1].value;
+        let val3= arr[2].value;
+        let val4 = arr[3].value;
+        if(val4 =="--"){
+            return `for (${val1} = ${val2}; ${val1} > ${val3}; $i ${val4} ) {`;
         }
-        else if(val3 =="++"){
-        return `for ($i = ${val1}; $i < ${val2}; $i ${val3} ) {`;
+        else if(val4 =="++"){
+        return `for (${val1} = ${val2}; ${val1} > ${val3}; $i ${val4}) {`;
         }
         else{
             return null;
         }
     }
-    else if(el.classList.contains("functionblock")){
-        let name = el.getElementsByClassName("name")[0].value;
-        let params = el.getElementsByClassName("param")[0].value.split(",");
+    else if(el.id == "Function") {
+        arr = el.querySelectorAll("input, select")
+        let name = arr[0].value;
+        let params = arr[1].split(",");
         console.log(params)
         let paramStr = "";
         for (let i=0; i<params.length; i++) {
@@ -59,54 +63,61 @@ function codeToPHP(el) {
 
     }
 
-    else if (el.classList.contains("arithblock")) {
-        let var1 = el.getElementsByClassName("val1")[0].value;
-        let var2 = el.getElementsByClassName("val2")[0].value;
-        let assignTo = el.getElementsByClassName("assignto")[0].value;
-        let operation = el.getElementsByClassName("operationType")[0].value;
+    else if (el.id == "Arithmetic") {
+        arr = el.querySelectorAll("input, select")
+
+        let var1 = arr[1].value;
+        let var2 = arr[3].value;
+        let assignTo = arr[0].value;
+        let operation = arr[2].value;
 
         return `$${assignTo} = $${var1} ${operation} $${var2};`;
     }
 
-    else if(el.classList.contains("ifblock")) {
-        let var1 = el.getElementsByClassName("val1")[0].value;
-        let var2 = el.getElementsByClassName("val2")[0].value;
-        let operation = el.getElementsByClassName("operationType")[0].value;
+    else if(el.id == "Condition") {
+        arr = el.querySelectorAll("input, select")
+        let val1 = arr[0].value;
+        let operation = arr[1].value;
+        let val2 = arr[2].value;
 
         return `if ($${var1} ${operation} $${var2}) {`;
 
     }
 
-    else if (el.classList.contains("outputblock")) {
+    else if (el.id == "Output") {
+        arr = el.querySelectorAll("input")
 
-        let out = el.getElementsByClassName("echo")[0].value;
-        let outType = el.getElementsByClassName("outputtype")[0].value;
+        let out = arr[0].value;
+        //let outType = el.getElementsByClassName("outputtype")[0].value;
 
-        if(outType=='variable'){
-            return `echo $${out}  ;`;
-        }
-        else if(outType=='string'){
-            return `echo " ${out} " ;`;
-        }
-        else if(outType=='number'){
-            return `echo ${out};`;
-        }
-
+        // if(outType=='variable'){
+        //     return `echo $${out}  ;`;
+        // }
+        // else if(outType=='string'){
+        //     return `echo " ${out} " ;`;
+        // }
+        // else if(outType=='number'){
+        //     return `echo ${out};`;
+        // }
+        return `echo $${out}  ;`;
     }
 
-    else if(el.classList.contains("readblock")) {
-        // let fileName = el.getElementsByClassName("")[0].value;
-        let filename = el.getElementsByClassName("readFileName")[0].value;
+    else if(el.id == "FileRead") {
+        arr = el.querySelectorAll("input, select")
+        let filecontent = arr[0].value;
+        let filename = arr[1].value;
       
-        return `$fileContent = file_get_contents("${filename}");
-                echo $fileContent;`;
+        return `${filecontent} = file_get_contents("${filename}");
+                echo ${varname};`;
       }
     
-    else if(el.classList.contains("writeblock")) {
-        let fileName = el.getElementsByClassName("writeFileName")[0].value;
-        let textToWrite = el.getElementsByClassName("textToWrite")[0].value;
+    else if(el.id == "FileWrite") {
+        arr = el.querySelectorAll("input, select")
+        let filecontent = arr[0].value;
+        let fileName = arr[1].value;
+        let textToWrite = arr[2].value;
       
-        return `file_put_contents("${fileName}", "${textToWrite}");`;
+        return `${filecontent}("${fileName}", "${textToWrite}");`;
       }
     // else if(el.classList.contains("blockoutputStatement")){
     //     //do smth here for proper output

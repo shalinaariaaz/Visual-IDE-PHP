@@ -29,52 +29,77 @@ function Shalina(data, parent){
 
   // Case for variable declaration
   case 'Var':
-    newHTMLContent = '<input type="text" placeholder="Variable name"> <span>=</span> <input type="text" placeholder="Variable value">';
+    newHTMLContent = '<input size="25" type="text" placeholder="Variable name"> <span>=</span> <input size="25" type="text" placeholder="Variable value">';
     break;
 
   // Case for loop creation
   case 'Loop':
-    newHTMLContent = '<select name="loop-type"><option value="for">for</option><option value="while">while</option></select>'; 
+    newHTMLContent = '<h5>For</h5>'+'<input type="text" placeholder="Variable name">'+
+    '<span> </span>'+
+    '<input type="text" placeholder="Start value">'+
+    '<span> </span>'+
+    '<input type="text" placeholder="End value">'+
+    '<span> </span>'+
+    '<select name="operation"><option value="increment">++</option>'+
+    '<option value="decrement">--</option>'; 
     break;
 
   // Case for conditional statement
   case 'Condition':
-    newHTMLContent = '<select name ="condition-type"><option value="If">if</option>'+
-    '<option value="If-else">if else</option>'+
-    '<option value="Else">else</option>'+
-    '<div> <input type="text" placeholder="Condition"></div>';
+    newHTMLContent = '<h5>If</h5>'+
+    '<input type="text" placeholder="Variable Name">'+
+    '<span> </span>'+
+    '<select name="operation"><option value="equal">==</option>'+
+    '<option value="not equal">!=</option>'+
+    '<option value="greater than">></option>'+
+    '<option value="less than"><</option>'+
+    '<option value="greater than or equal to">>=</option>'+
+    '<option value="less than or equal to"><=</option>'+
+    '<span> </span>'+
+    '<input type="text" placeholder="Variable OR Value">'+
+    '<h5>Else</h5>';
     break;
 
   // Case for function declaration
   case 'Function':
-    newHTMLContent = '<input type="text" placeholder="Function name">'+
-    '<input type="text" placeholder="Parameter">';
+    newHTMLContent = '<input size="25" type="text" placeholder="Function name">'+
+    '<span> </span>'+
+    '<input size="25" type="text" placeholder="Parameter">';
     break;
 
   // Case for arithmetic operation
   case 'Arithmetic':
-    newHTMLContent = '<input type="text" placeholder="Variable 1">'+
+    newHTMLContent = '<input size="23"type="text" placeholder="Variable">'+
+    '<span> = </span>'+
+    '<input size="23"type="text" placeholder="Variable 1">'+
+    '<span> </span>'+
     '<select name="symbol"><option value="add">+</option>'+
     '<option value="subtract">-</option>'+
     '<option value="multiply">*</option>'+
     '<option value="divide">/</option>'+
-    '<input type="text" placeholder="Variable 2">';
+    '<input size="23" type="text" placeholder="Variable 2">';
     break;
 
   // Case for file read operation
-  case 'File Read':
-    newHTMLContent = '<input type="text" placeholder="File name">';
+  case 'FileRead':
+    newHTMLContent = '<input size="25" type="text" placeholder="Variable Name">'+
+    '<span> </span>'+
+    '<input size="25" type="text" placeholder="File name">';
     break;
 
   // Case for file write operation
-  case 'File Write':
-    newHTMLContent = '<input type="text" placeholder="File name">'+
-    '<input type="text" placeholder="Write your Promt here">';
+  case 'FileWrite':
+    newHTMLContent = '<input type="text" placeholder="Variable Name">'+
+    '<span> </span>'+
+    '<input type="text" placeholder="File name">'+
+    '<p></p>'+
+    '<input size="46" type="text" placeholder="Write your Promt here">';
     break;
 
   // Case for node creation
-  case 'Node Creation':
-    newHTMLContent = '<input type="text" placeholder="Content to be Printed">';
+  case 'Echo':
+    //
+    newHTMLContent = '<input size="60" type="text" placeholder="Variable or text to be displayed">';
     break;
 
   // Default case for invalid input
