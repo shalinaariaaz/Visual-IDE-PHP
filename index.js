@@ -31,7 +31,7 @@ for (var i = 0; i < elementNames.length; i++) {
   // Add the dragStart event listener to the div element
   div.addEventListener('dragstart', function(event) {
     // Set the data that will be transferred when the element is dropped
-    event.dataTransfer.setData('text/plain', event.target.id);
+    event.dataTransfer.setData('application/my-app', event.target.id);
     event.dataTransfer.effectAllowed = 'copy';
   });
 

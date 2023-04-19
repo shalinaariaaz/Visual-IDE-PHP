@@ -1,26 +1,27 @@
-// Get a reference to the drop target element
+// Get a reference to the drop target element6
 var dropTarget = document.getElementById('box2');
-
+dropTarget.classList.add("SpecialElem");
 
 // Add the drop event listener to the drop target element
 dropTarget.addEventListener('drop', function (event) {
   event.preventDefault();
   // Get the id of the draggable element from the data transfer object
-  var data = event.dataTransfer.getData('text/plain');
-  
+  var data = event.dataTransfer.getData('application/my-app');  
   
   // Get a reference to the draggable element
   var draggableElement = document.getElementById(data);
-  console.log(data.id)
-  if (data.id == 'Condition' || data.id == 'Loop' || data.id == 'Function') {
-    Shalina(data, event.target);
-  }
-  else{
-    Shalina(data, dropTarget)
-  }
+  
+    console.log(findParent(event.target))
+    Shalina(data, findParent(event.target));
+    
 // Initialize variable to store the new HTML content
 var newHTMLContent = '';
 });
+
+function findParent(node){
+  if (node.classList.contains("SpecialElem"))return node;
+  else return findParent(node.parentNode);
+}
 
 function Shalina(data, parent){
   // Switch statement to handle different cases
@@ -34,39 +35,6 @@ function Shalina(data, parent){
   // Case for loop creation
   case 'Loop':
     newHTMLContent = '<select name="loop-type"><option value="for">for</option><option value="while">while</option></select>'; 
-
-    // Get the dropdown element
-    var loopDropdown = document.querySelector('select[name="loop-type"]');
-    
-    // Get the selected option value
-    var loopType = loopDropdown.value;
-
-    // Nested switch statement to handle different loop types
-    switch(loopType) {
-      
-      // Case for 'for' loop
-      case 'for':
-        newHTMLContent = '<div><input type="text" placeholder="Variable name"></div>' +
-        '<div><input type="text" placeholder="From"></div>' +
-        '<div><input type="text" placeholder="To"></div>' +
-        '<div><input type="text" placeholder="Increment"></div>';
-        break;
-
-      // Case for 'while' loop
-      case 'while':
-        newHTMLContent = '<div><input type="text" placeholder="Variable name"></div>' +
-        '<select name="symbol"><option value="less"><</option>'+
-        '<option value="greater">></option>'+
-        '<option value="equal">=</option>'+
-        '<option value="lessorequal"><=</option>'+
-        '<option value="greaterorequal">>=</option></select>'+
-        '<div><input type="text" placeholder="Condition"></div>';
-        break;
-
-      // Default case for loop type
-      default:
-        console.log('Invalid loop type');
-    }
     break;
 
   // Case for conditional statement
@@ -113,13 +81,16 @@ function Shalina(data, parent){
   default:
     console.log('Invalid input');
 }
-
   
   // Create a new element with the same id as the draggable element
   var newElement = document.createElement('div');
-  newElement.id = data.id;
   // Set the style of the new element
   newElement.innerHTML = newHTMLContent;
+  newElement.id = data;
+
+  if(data == 'Condition' || data == 'Loop' || data == 'Function'){
+  newElement.classList.add("SpecialElem");
+  }
   // Set the style of the new element
   newElement.style.background = 'linear-gradient(to right, #56356d, #1f2466)';
   newElement.style.color = 'white';
