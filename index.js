@@ -25,7 +25,7 @@ for (var i = 0; i < elementNames.length; i++) {
   div.style.color = 'white';
   div.style.padding = '10px';
   div.style.margin = '10px';
-  div.style.borderRadius = '5px';
+  div.style.borderRadius = '10px';
   div.style.boxShadow = '0 0 5px 0 #1f2466';
 
   // Add the dragStart event listener to the div element
