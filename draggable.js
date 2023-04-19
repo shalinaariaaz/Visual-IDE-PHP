@@ -100,7 +100,7 @@ function Shalina(data, parent){
   // Case for node creation
   case 'Echo':
     //
-    newHTMLContent = '<input size="60" class="print" type="text" placeholder="Variable or text to be displayed">';
+    newHTMLContent = '<input size="40" class="print" type="text" placeholder="Variable or text to be displayed">';
     break;
 
   // Default case for invalid input
