@@ -29,15 +29,15 @@ function codeToPHP(el) {
     else if(el.id == "Loop") {
         arr = el.querySelectorAll("input, select")
 
-        let val1 = arr[0].value;
-        let val2 = arr[1].value;
-        let val3= arr[2].value;
-        let val4 = arr[3].value;
+        let varname = arr[0].value;
+        let startvalue = arr[1].value;
+        let endvalue= arr[2].value;
+        let operation = arr[3].value;
         if(val4 =="--"){
-            return `for (${val1} = ${val2}; ${val1} > ${val3}; $i ${val4} ) {`;
+            return `for (${varname} = ${startvalue}; ${varname} > ${endvalue}; $i ${operation} ) {`;
         }
         else if(val4 =="++"){
-        return `for (${val1} = ${val2}; ${val1} > ${val3}; $i ${val4}) {`;
+        return `for (${varname} = ${startvalue}; ${varname} > ${endvalue}; $i ${operation} ) {`;
         }
         else{
             return null;
@@ -66,11 +66,11 @@ function codeToPHP(el) {
     else if (el.id == "Arithmetic") {
         arr = el.querySelectorAll("input, select")
 
-        let var1 = arr[1].value;
-        let var2 = arr[3].value;
         let assignTo = arr[0].value;
+        let var1 = arr[1].value;
         let operation = arr[2].value;
-
+        let var2 = arr[3].value;
+        
         return `$${assignTo} = $${var1} ${operation} $${var2};`;
     }
 
@@ -80,11 +80,11 @@ function codeToPHP(el) {
         let operation = arr[1].value;
         let val2 = arr[2].value;
 
-        return `if ($${var1} ${operation} $${var2}) {`;
+        return `if ($${val1} ${operation} $${val2}) {`;
 
     }
 
-    else if (el.id == "Output") {
+    else if (el.id == "Echo") {
         arr = el.querySelectorAll("input")
 
         let out = arr[0].value;
@@ -104,15 +104,17 @@ function codeToPHP(el) {
 
     else if(el.id == "FileRead") {
         arr = el.querySelectorAll("input, select")
+
         let filecontent = arr[0].value;
         let filename = arr[1].value;
       
         return `${filecontent} = file_get_contents("${filename}");
-                echo ${varname};`;
+                echo ${filecontent};`;
       }
     
     else if(el.id == "FileWrite") {
         arr = el.querySelectorAll("input, select")
+        
         let filecontent = arr[0].value;
         let fileName = arr[1].value;
         let textToWrite = arr[2].value;
