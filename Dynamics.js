@@ -59,7 +59,6 @@ function Shalina(data, parent) {
         '<option value="<"><</option>' +
         '<option value=">=">>=</option>' +
         '<option value="<="><=</option>' +
-        '<span> </span>' +
         '<input type="text" class="varName2" placeholder="Variable OR Value">' +
         '<div class="insideDiv"></div>';
       break;

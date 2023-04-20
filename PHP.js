@@ -1,7 +1,19 @@
+function execAndGetPHPOutput() {
+    let code = document.getElementById("box2").innerText;
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "Execution.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("code=" + encodeURIComponent(code));
+    xhr.onload = () => {
+        document.getElementById("box4").innerText += '\n'+ xhr.responseText;
+    }
+    }
+
 function genCode() {
     let codeArea = document.getElementById("box2").getElementsByClassName("insideDiv")[0];
     document.getElementById("box3").innerHTML = "";
     _genCode(codeArea, "");
+    execAndGetPHPOutput();
 }
 
 function _genCode(el, indent = "") {
@@ -120,14 +132,3 @@ function codeToPHP(el) {
       
     }
 
-function execAndGetPHPOutput() {
-    let code = document.getElementById("box2").innerText;
-    console.log(code)
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "Execution.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("code=" + encodeURIComponent(code));
-    xhr.onload = () => {
-        document.getElementById("box4").innerText += '\n'+ xhr.responseText;
-    }
-    }
