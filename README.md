@@ -1,4 +1,5 @@
-# Assignment2
+# About the Project
+This project has been made as part of the coursework required for CS 344 Web Engineering. It is a graded assignment.
 
 
 # Visual IDE For PHP
