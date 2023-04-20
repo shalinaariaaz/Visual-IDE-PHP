@@ -21,7 +21,7 @@ var newHTMLContent = '';
 function findParent(node){
   if (node.classList.contains("SpecialElem"))return node;
   else return findParent(node.parentNode);
-}
+  }
 
 function Shalina(data, parent){
   // Switch statement to handle different cases
