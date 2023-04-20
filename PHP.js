@@ -119,3 +119,15 @@ function codeToPHP(el) {
     // }
       
     }
+
+function execAndGetPHPOutput() {
+    let code = document.getElementById("box2").innerText;
+    console.log(code)
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "Execution.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("code=" + encodeURIComponent(code));
+    xhr.onload = () => {
+        document.getElementById("box4").innerText += '\n'+ xhr.responseText;
+    }
+    }
