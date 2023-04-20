@@ -1,6 +1,9 @@
 // Get a reference to the drop target element6
 var dropTarget = document.getElementById('box2');
 dropTarget.classList.add("SpecialElem");
+let insideDiv = document.createElement("div");
+insideDiv.classList.add("insideDiv");
+dropTarget.appendChild(insideDiv);
 
 // Add the drop event listener to the drop target element
 dropTarget.addEventListener('drop', function (event) {
@@ -41,7 +44,8 @@ function Shalina(data, parent){
     '<input type="text" class="endVal" placeholder="End value">'+
     '<span> </span>'+
     '<select name="operation" class="operation"><option value="++">++</option>'+
-    '<option value="--">--</option>'; 
+    '<option value="--">--</option></select>' +
+    '<div class="insideDiv"></div>'; 
     break;
 
   // Case for conditional statement
@@ -57,14 +61,16 @@ function Shalina(data, parent){
     '<option value="<="><=</option>'+
     '<span> </span>'+
     '<input type="text" class="varName2" placeholder="Variable OR Value">'+
-    '<h5>Else</h5>';
+    '<h5>Else</h5>' +
+    '<div class="insideDiv"></div>';
     break;
 
   // Case for function declaration
   case 'Function':
     newHTMLContent = '<input size="25" type="text" class="funcName" placeholder="Function name">'+
     '<span> </span>'+
-    '<input size="25" class="funcParams" type="text" placeholder="Parameter">';
+    '<input size="25" class="funcParams" type="text" placeholder="Parameter">'
+    + '<div class="insideDiv"></div>';
     break;
 
   // Case for arithmetic operation
@@ -126,7 +132,13 @@ function Shalina(data, parent){
   newElement.style.boxShadow = '0 0 5px 0 #1f2466';
  
   // Append the new element to the drop target element
-  parent.appendChild(newElement);
+  if (parent.classList.contains("SpecialElem")) {
+    let insideDiv = parent.getElementsByClassName("insideDiv")[0];
+    insideDiv.appendChild(newElement);
+  } else {
+    parent.appendChild(newElement);
+  }
+  
 
   }
 // Add the dragover event listener to the drop target element

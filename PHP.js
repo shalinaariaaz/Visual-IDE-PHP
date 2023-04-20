@@ -1,12 +1,13 @@
 function genCode() {
+    let codeArea = document.getElementById("box2").getElementsByClassName("insideDiv")[0];
     document.getElementById("box3").innerHTML = "";
-    _genCode(document.getElementById("box2"), "");
+    _genCode(codeArea, "");
 }
 
 function _genCode(el, indent = "") {
     for(let i = 0; i < el.children.length; i++) {
-        if (el.children[i].classList.contains("canDropInside")) {
-            document.getElementById("code").innerHTML += "<br>" + indent + codeToPHP(el.children[i]);
+        if (el.children[i].classList.contains("SpecialElem")) {
+            document.getElementById("box3").innerHTML += "<br>" + indent + codeToPHP(el.children[i]);
             let ell = el.children[i].getElementsByClassName("insideDiv")[0];
             _genCode(ell, indent + "   ");
             document.getElementById("box3").innerHTML += "<br>" + indent + "}";
