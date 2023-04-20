@@ -86,16 +86,12 @@ function Shalina(data, parent) {
 
     // Case for file read operation
     case 'FileRead':
-      newHTMLContent = '<input size="25" type="text" class="varName" placeholder="Variable Name">' +
-        '<span> </span>' +
-        '<input size="25" type="text" class="fileName" placeholder="File name">';
+      newHTMLContent = '<input size="25" type="text" class="fileName" placeholder="File name">';
       break;
 
     // Case for file write operation
     case 'FileWrite':
-      newHTMLContent = '<input type="text" class="varName" placeholder="Variable Name">' +
-        '<span> </span>' +
-        '<input type="text" class="fileName" placeholder="File name">' +
+      newHTMLContent = '<input type="text" class="fileName" placeholder="File name">' +
         '<p></p>' +
         '<input size="46" type="text" class="prompt" placeholder="Write your Promt here">';
       break;

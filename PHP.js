@@ -80,7 +80,7 @@ function codeToPHP(el) {
         let val1 = el.getElementsByClassName("varName")[0].value;
         let operation = el.getElementsByClassName("operation")[0].value;
         let val2 = el.getElementsByClassName("varName2")[0].value;
-        return `if ($${val1} ${operation} $${val2}) {`;
+        return `if ($${val1} ${operation} ${val2}) {`;
 
     }
 
@@ -103,19 +103,16 @@ function codeToPHP(el) {
     }
 
     else if(el.id == "FileRead") {
-        let filecontent = el.getElementsByClassName("varName")[0].value;
         let filename = el.getElementsByClassName("fileName")[0].value;
       
-        return `${filecontent} = file_get_contents("${filename}");
-                echo ${filecontent};`;
+        return `echo file_get_contents("${filename}");`;
       }
     
     else if(el.id == "FileWrite") {
-        let filecontent = el.getElementsByClassName("varName")[0].value;
         let filename = el.getElementsByClassName("fileName")[0].value;
         let textToWrite = el.getElementsByClassName("prompt")[0].value;
       
-        return `${filecontent}("${filename}", "${textToWrite}");`;
+        return `file_put_contents("${filename}", "${textToWrite}");`;
       }
     // else if(el.classList.contains("blockoutputStatement")){
     //     //do smth here for proper output
