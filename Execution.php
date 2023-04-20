@@ -13,7 +13,7 @@
     fwrite($myfile, "?>");
     fclose($myfile);
 
-    system("C:\wamp\bin\php\php8.1.13\php.exe -f code.php 2>&1", $output);
+    system("C:\wamp64\bin\php\php8.1.13\php.exe -f code.php 2>&1", $output);
     //execute the code
     $output = shell_exec('code.php');
     return $output;

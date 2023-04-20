@@ -1,5 +1,5 @@
 function execAndGetPHPOutput() {
-    let code = document.getElementById("box2").innerText;
+    let code = document.getElementById("box3").innerText;
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "Execution.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
